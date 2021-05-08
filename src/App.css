@@ -1,6 +1,7 @@
-*{
-  /* border: 1px solid black; */
-}
+/* *{
+  border: 1px solid black; */
+  /* box-sizing: border-box;
+} */
 
 .container {
   display: flex;
@@ -21,6 +22,7 @@ body {
 .btnsDiv {
   display: flex;
   justify-content: space-around;
+  margin: 1rem 0rem;
 }
 
 button {
@@ -35,7 +37,7 @@ button {
 }
 
 input[type="range"] {
-  margin: .3rem 0rem 2rem 0rem;
+  margin: .3rem 0rem 1rem 0rem;
   /* width: 90%; */
 }
 
@@ -51,8 +53,10 @@ h1 {
   text-transform: uppercase;
   color: darkgray;
   letter-spacing: 4px;
-  line-height: 4rem;
+  line-height: 2.5rem;
   font-size: small;
+  position: absolute;
+  top: 13px;
 }
 
 button:hover{
@@ -67,7 +71,7 @@ button:hover{
   flex-direction: row;
   /* border: 1px solid black; */
   width: 76%;
-  margin: auto;
+  margin: 1rem auto;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
@@ -77,6 +81,25 @@ button.downloadBtn {
   color: aliceblue;
 }
 
+button.downloadBtn:hover {
+  border-radius: .5rem;
+  background-color: rgb(99, 150, 192);
+  color: aliceblue;
+}
+
+button.downloadBtn:active{
+  background-color: rgb(41, 94, 138);
+  /* border: 2px solid rgb(0, 0, 0); */
+  color: aliceblue;
+}
+
+button.downloadBtn:disabled{
+  border: none;
+  background-color: gainsboro;
+  cursor: initial;
+  color: darkgray;
+}
+
 .titleDiv {
   height: 11px;
 }
@@ -84,19 +107,24 @@ button.downloadBtn {
 p {
   background: black;
   text-align: center;
-  padding: 1rem;
+  padding: .4rem;
   color: aliceblue;
   margin-top: 1rem;
 }
 
 img {
-  max-height: 29.9em;
-  margin: 1rem 1rem;
-  max-width: 94%;
+  max-height: 70vh;
+  /* margin: 1rem 1rem; */
+  /* max-width: 94%; */
+  max-width: 50vw;
+  /* object-fit: cover; */
+  /* object-fit: contain; */
+  /* object-fit: none; */
 }
 
 input[type="file"] {
   margin-top: 2rem;
+  width: -webkit-fill-available;
 }
 
 .active{
@@ -112,4 +140,66 @@ p.rangeValue {
   /* right: -287px; */
   display: flex;
   flex-direction: row-reverse;
+  margin: 0px;
 }
+
+.rangeDiv {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+button:disabled {
+  border: none;
+  background-color: gainsboro;
+  cursor: initial;
+  color: darkgray;
+}
+
+h4 {
+  color: mediumorchid;
+}
+
+@media (max-width: 1072px) {
+  .main{
+    width: 100%;
+  }
+  img {
+    max-height: 70vh;
+    max-width: 63vw;
+}
+}
+
+@media (max-width: 854px) {
+  *{
+    /* border: 1px solid black; */
+  }
+
+  .container {
+    border: none;
+    height: 71vh;
+  }
+  .main{
+    flex-direction: column;
+  }
+
+  input[type="file"] {
+    margin-top: 1rem;
+  }
+
+  .btnsDiv{
+    width: 87%;
+    overflow-x: scroll;
+  }
+
+  .rightDiv {
+    padding: 1rem 1rem;
+    width: 90%;
+}
+img {
+  margin-top: 9px;
+  max-height: 48vh;
+  max-width: 87vw;
+}
+}
+

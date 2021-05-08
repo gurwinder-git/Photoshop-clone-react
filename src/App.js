@@ -1,6 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Btn from './Btn';
 import './App.css';
+import {toJpeg } from 'html-to-image';
+import * as download from "downloadjs";
+
 const defaultOptions = [
   {
     name: "Brightness",
@@ -80,7 +83,11 @@ function App() {
   let [selectedOptionIndex, setSelectedOptionIndex] = useState(0);
   let selectedOption = btnOptions[selectedOptionIndex];
 
-
+  useEffect(() => {
+      setBtnOptions(defaultOptions)
+      setSelectedOptionIndex(0)
+  }, [file])
+  
   
   function handelImg(e){
     setFile(e.target.files[0])
@@ -89,7 +96,7 @@ function App() {
   function handleRange(e){
     // console.log(e.target.value);
 
-    // update default options
+    // update setBtnOptions options not default options
     setBtnOptions((preValues) => {
       return preValues.map((option, index)=>{
         if(selectedOptionIndex !== index)
@@ -98,7 +105,6 @@ function App() {
           return {...option, value: e.target.value}
       })
     })
-
     // console.log(btnOptions)
   }
 
@@ -110,49 +116,61 @@ function App() {
     return {filter: filters.join(' ')}
   }
 
+  function downloadImg(){
+    var node = document.getElementById('image');
+    toJpeg(node)
+      .then((dataUrl) => {
+        console.log(dataUrl)
+        download(dataUrl,`${Date.now()}Gurwinder_Singh`)
+      })
+      .catch((error) => {
+        console.error('oops, something went wrong!', error);
+      });
+  }
+
   return (
     <>
-    <div className="titleDiv">
-      <h1>photoshop</h1>
-    </div>
-
     <div className = "main">
 
       <div className="container">
-        <img src={file? URL.createObjectURL(file) : null} alt= {file? file.name : null} style = {getImgStyle()}/>
+        <h1>photoshop</h1>
+        {file? <img id = "image" src={file? URL.createObjectURL(file) : null} alt= {file? file.name : null} style = {getImgStyle()}/>: <h4>Please select image...</h4>}
+        
         <div className="btnsDiv">
           {
             btnOptions.map((data,index)=>(
               <Btn 
                 key = {index} 
                 name = {data.name} 
-                active = {index === selectedOptionIndex}
                 handleClick = {()=>{setSelectedOptionIndex(index)}}
+                active = {index === selectedOptionIndex}
+                isDisable = {file? false: true}
                 />
             ))
           }
           
         </div>
         <div className = "rangeDiv">
-          <p className = "rangeValue">{selectedOption.value} {selectedOption.unit}</p>
+          <p className = "rangeValue" >{selectedOption.value} {selectedOption.unit}</p>
           <input 
             type="range"
             min = {selectedOption.range.min}
             max = {selectedOption.range.max}
             value = {selectedOption.value}
             onChange = {handleRange}
+            disabled = {file? false: true}
             />
         </div>
       </div>
 
       <div className = "rightDiv">
-        <button className = "downloadBtn">Download</button>
+        <button className = "downloadBtn" onClick = {downloadImg} disabled = {file? false: true}>Download</button>
         <input type="file" name="srcImg" onChange = {handelImg} accept="image/*"/>
       </div>
 
     </div>
     <div className="footerDiv">
-      <p>All CopyRighs are reseverd</p>
+      <p>Created by Gurwinder Singh</p>
     </div>
     </>
   );
