@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Photoshop-clone-react/static/css/main.8326ef56.chunk.css",
+    "main.js": "/Photoshop-clone-react/static/js/main.676f7f74.chunk.js",
+    "main.js.map": "/Photoshop-clone-react/static/js/main.676f7f74.chunk.js.map",
+    "runtime-main.js": "/Photoshop-clone-react/static/js/runtime-main.066da98f.js",
+    "runtime-main.js.map": "/Photoshop-clone-react/static/js/runtime-main.066da98f.js.map",
+    "static/js/2.0bc908df.chunk.js": "/Photoshop-clone-react/static/js/2.0bc908df.chunk.js",
+    "static/js/2.0bc908df.chunk.js.map": "/Photoshop-clone-react/static/js/2.0bc908df.chunk.js.map",
+    "index.html": "/Photoshop-clone-react/index.html",
+    "static/css/main.8326ef56.chunk.css.map": "/Photoshop-clone-react/static/css/main.8326ef56.chunk.css.map",
+    "static/js/2.0bc908df.chunk.js.LICENSE.txt": "/Photoshop-clone-react/static/js/2.0bc908df.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.066da98f.js",
+    "static/js/2.0bc908df.chunk.js",
+    "static/css/main.8326ef56.chunk.css",
+    "static/js/main.676f7f74.chunk.js"
+  ]
+}
