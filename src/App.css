@@ -187,10 +187,11 @@ h4 {
     margin-top: 1rem;
   }
 
-  .btnsDiv{
+  .btnsDiv {
     width: 87%;
-    overflow-x: scroll;
-  }
+    overflow-x: auto;
+    justify-content: end;
+}
 
   .rightDiv {
     padding: 1rem 1rem;
